@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Seafood Special",
+        "image": "seafoods.jpg",
+        "meal_special": "Fried Salmon Special",
+        "meal_description": "Mouthwatering salmon, fried and cooked to perfection.."
+    },
+    {
+        "name": "Sumptuous Desserts",
+        "image": "desserts.jpg",
+        "meal_special": "Choco Ice Cream Sandwich",
+        "meal_description": "Cool down with a delicious chocolate ice cream sandwich, filled with your choice of ice cream flavor.."
+    },
+    {
+        "name": "Buffet",
+        "image": "buffet.jpg",
+        "meal_special": "Mixed Buffet",
+        "meal_description": "Endulge yourself with over 50 different entrees and side dishes..."
+    }
+]
