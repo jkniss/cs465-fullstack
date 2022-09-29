@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
-// define the trip schema
+
+
+// define the trip schema, each individual data entity defined in the schema is called a path.
 const tripSchema = new mongoose.Schema({
     code: {type: String, required: true, index: true },
     name: {type: String, required: true, index: true },
@@ -12,4 +14,4 @@ const tripSchema = new mongoose.Schema({
 });
 
 // mongoose.model('trips', tripSchema);
-module.exports = mongoose.model("trips", tripSchema);
+module.exports = mongoose.model('trips', tripSchema);

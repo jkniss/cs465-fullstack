@@ -14,7 +14,7 @@ const connect = () => {
 }
 
 mongoose.connection.on('connected', () => {
-    console.log('Mongoose conncted to ${dbURI}');
+    console.log(`Mongoose conncted to ${dbURI}`);
 });
 
 mongoose.connection.on('error', err => {
@@ -37,7 +37,7 @@ if (process.platform === 'win32') {
 
 const gracefulShutdown = (msg, callback) => {
     mongoose.connection.close ( () => {
-        console.log('Mongoose disconnected through ${msg}');
+        console.log(`Mongoose disconnected through ${msg}`);
         callback();
     });
 };
@@ -66,4 +66,4 @@ process.on('SIGTERM', () => {
 connect();
 
 // bring in the Mongoose schema
-require('./models/travlr');
+require("./models/travlr");
