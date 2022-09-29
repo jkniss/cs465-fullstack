@@ -4,24 +4,31 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const hbs = require('hbs');
-require('./app_server/database/db');
+const process = require('process');
+require("./app_api/database/db");
 
-const indexRouter = require('./app_server/routes/index');
-const usersRouter = require('./app_server/routes/users');
-const travelRouter = require('./app_server/routes/travel');
-const roomRouter  = require('./app_server/routes/rooms')
-const mealRouter = require('./app_server/routes/meals');
+// routers for the various pages
+const indexRouter = require("./app_server/routes/index");
+const usersRouter = require("./app_server/routes/users");
+const travelRouter = require("./app_server/routes/travel");
+const roomRouter  = require("./app_server/routes/rooms")
+const mealRouter = require("./app_server/routes/meals");
+const newsRouter = require("./app_server/routes/news");
+const contactRouter = require("./app_server/routes/contact");
+const aboutRouter = require("./app_server/routes/about");
 
+// routers for the API 
+const apiRouter = require("./app_api/routes/index");
 
 const app = express();
 
-
 // view engine setup
-app.set('views', path.join(__dirname, 'app_server', 'views'));
+app.set('views', path.join(__dirname, "app_server", "views"));
 
-    hbs.registerPartials(path.join(__dirname, 'app_server', 'views/partials'));
+hbs.registerPartials(path.join(__dirname, "app_server", "views/partials"), (err) => {"Did not load!"});
 
 app.set('view engine', 'hbs');
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -29,11 +36,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/index', indexRouter);
-app.use('/users', usersRouter);
-app.use('/travel', travelRouter);
-app.use('/rooms', roomRouter);
-app.use('/meals', mealRouter);
+
+// Tells application to check the server application routes for all incoming request
+app.use("/", indexRouter);
+app.use("/users", usersRouter);
+app.use("/travel", travelRouter);
+app.use("/rooms", roomRouter);
+app.use("/meals", mealRouter);
+app.use("/news", newsRouter);
+app.use("/contact", contactRouter);
+app.use("/about", aboutRouter);
+
+// Tells application to check the server application routes for all incoming requests to API
+app.use("/api", apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
