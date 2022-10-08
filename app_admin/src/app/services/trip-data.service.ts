@@ -1,37 +1,54 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Injectable } from "@angular/core";
+import { Http } from "@angular/http";
 
-import { Trip } from '../models/trip';
+import { Trip } from "../models/trip";
 
 @Injectable()
 export class TripDataService {
+  constructor(private http: Http) {}
 
-  constructor(private http: Http) { }
-
-  private apiBaseUrl = 'http://localhost:3000/api/';
+  private apiBaseUrl = "http://localhost:3000/api/";
   private tripUrl = `${this.apiBaseUrl}trips/`;
 
-  public addTrip(formData: Trip): Promise<Trip> {
-    console.log('Inside TripDataService#addTrip');
+  public getTrips(): Promise<Trip[]> {
+    console.log("Inside TripDataService#getTrips");
     return this.http
-      .post(this.tripUrl, formData)
+      .get(`${this.apiBaseUrl}trips`)
       .toPromise()
-      .then(response => response.json() as Trip[])
+      .then((response) => response.json() as Trip[])
       .catch(this.handleError);
   }
 
-  public getTrips(): Promise<Trip[]> {
-    console.log('Inside TripDataService#getTrips');
+  public getTrip(tripCode: string): Promise<Trip[]> {
+    console.log("Inside TripDataService#getTrip(tripCode)");
     return this.http
-      .get(this.tripUrl)
+      .get(this.tripUrl + tripCode)
       .toPromise()
-      .then(response => response.json() as Trip[])
+      .then((response) => response.json() as Trip[])
+      .catch(this.handleError);
+  }
+
+  public addTrip(formData: Trip): Promise<Trip> {
+    console.log("Insided TripDataService#addTrip");
+    return this.http
+      .post(this.tripUrl, formData)
+      .toPromise()
+      .then((response) => response.json() as Trip[])
+      .catch(this.handleError);
+  }
+
+  public updateTrip(formData: Trip): Promise<Trip[]> {
+    console.log("Inside TripDataService#updateTrip");
+    console.log(formData);
+    return this.http
+      .put(this.tripUrl + formData.code, formData)
+      .toPromise()
+      .then((response) => response.json() as Trip[])
       .catch(this.handleError);
   }
 
   private handleError(error: any): Promise<any> {
-    console.error('Something has gone wrong', error);
+    console.error("Something has gone wrong", error);
     return Promise.reject(error.message || error);
   }
-
 }
