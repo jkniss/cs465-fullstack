@@ -5,8 +5,8 @@ import { AddTripComponent } from "./add-trip/add-trip.component";
 import { EditTripComponent } from "./edit-trip/edit-trip.component";
 
 const routes: Routes = [
-  { path: "add-trip", component: AddTripComponent },
-  { path: "edit-trip", component: EditTripComponent },
+  { path: "add-trip", component: AddTripComponent }, // routes to the add-trip component.ts
+  { path: "edit-trip", component: EditTripComponent }, // routes to the edit-trip component.ts
   { path: "", component: TripListingComponent, pathMatch: "full" },
 ];
 
