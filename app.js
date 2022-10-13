@@ -11,7 +11,7 @@ const passport = require('passport');
 
 require("./app_api/database/db");
 
-require("./app_api/passport");
+require("./app_api/config/passport");
 
 // routers for the various pages
 const indexRouter = require("./app_server/routes/index");
