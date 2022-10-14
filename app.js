@@ -11,7 +11,7 @@ const passport = require('passport');
 
 require("./app_api/database/db");
 
-require("./app_api/passport");
+require("./app_api/config/passport");
 
 // routers for the various pages
 const indexRouter = require("./app_server/routes/index");
@@ -65,12 +65,12 @@ app.use("/about", aboutRouter);
 // Tells application to check the server application routes for all incoming requests to API
 app.use("/api", apiRouter);
 
-// catch 404 and forward to error handler
+// catch 404 and forward to  error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
-//catch unauthorized error and create 401
+//catch unauthorized error and create 401 global handler
 app.use((err, req, res, next) => {
   if (err.name === 'UnauthorizedError') {
     res

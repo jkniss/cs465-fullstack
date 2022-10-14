@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
-const { StringDecoder } = require('string_decoder');
+
 
 const userSchema = new mongoose.Schema({
     email: {
