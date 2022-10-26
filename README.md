@@ -40,4 +40,5 @@ Security for the application was built by adding authentication to the SPA when 
 How has this course helped you in reaching your professional goals? What skills have you learned, developed, or mastered in this course to help you become a more marketable candidate in your career field?
 
 This course has helped me gain a greater understanding of how a web application is developed. In previous classes, I have touched on individual topics like databases, programming languages, client-server architecture. Understanding what goes into a project and development provided me with a greater appreciation for what it takes to get an applicaiton into production. 
-I learned several new skills during this development including: Angular, Node.js, Express, Mongoose, MongoDB, Javascript, HTML, CSS, handlbars, Jade, node dependencies, creating RESTful API, testing API methods, Postman, implementing authentication and authorization protocols, creating MVC architectures, and much more. 
+
+I learned several new skills during this development including: Angular, Node.js, Express, Mongoose, MongoDB, Javascript, HTML, CSS, handlbars, Jade, node dependencies, creating RESTful API, testing API methods, Postman, implementing authentication and authorization protocols, creating MVC architectures, version control using Git, and much more. 
